@@ -16,6 +16,8 @@ FLAGGED_PHRASES = (
     'getting professional academic help from us is easy',
     'cutt.us',
     'inyurl.com/muxz7h',
+    'to cancer about a week ago',
+    'play station 5',
 )
 
 
@@ -55,8 +57,7 @@ def receive(event, context):
     for phrase in FLAGGED_PHRASES:
         if phrase in message['text'].lower():
             kick_user(message['group_id'], message['user_id'], message['token'])
-            delete_message(message['group_id'], message['id'], message['token'])
-            send('Kicked ' + message['name'] + ' due to apparent spam post.', bot_id)
+            delete_message(message['group_id'], message['id'], message['token'])           
             break
 
     return {
